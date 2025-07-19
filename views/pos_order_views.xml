@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_order_form_bom" model="ir.ui.view">
+      <field name="name">pos.order.form.bom</field>
+      <field name="model">pos.order</field>
+      <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='lines']/tree/field[@name='full_product_name']" position="after">
+          <field name="product_id" invisible="1"/>
+          <field name="product_id"
+                 widget="badge"
+                 invisible="product_id == False"
+                 options="{'field_text_mapping': {'has_bom': 'BOM'}}"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="view_pos_order_line_form_bom" model="ir.ui.view">
+        <field name="name">pos.order.line.form.bom</field>
+        <field name="model">pos.order.line</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_order_line_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="product_id" invisible="1"/>
+                <group invisible="product_id == False"
+                       string="BOM Information" colspan="2">
+                    <field name="product_id" readonly="1"/>
+                    <label for="product_id" string="Has BOM:"
+                           invisible="product_id == False"/>
+                    <div invisible="product_id == False">
+                        <field name="product_id" widget="boolean" readonly="1"/>
+                    </div>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

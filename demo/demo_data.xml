@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Demo Products for BOM testing -->
+    <record id="product_component_a" model="product.product">
+        <field name="name">Component A</field>
+        <field name="type">product</field>
+        <field name="categ_id" ref="product.product_category_all"/>
+        <field name="list_price">10.0</field>
+        <field name="standard_price">8.0</field>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_component_b" model="product.product">
+        <field name="name">Component B</field>
+        <field name="type">product</field>
+        <field name="categ_id" ref="product.product_category_all"/>
+        <field name="list_price">15.0</field>
+        <field name="standard_price">12.0</field>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_assembly" model="product.product">
+        <field name="name">Assembly Product</field>
+        <field name="type">product</field>
+        <field name="categ_id" ref="product.product_category_all"/>
+        <field name="list_price">50.0</field>
+        <field name="standard_price">30.0</field>
+        <field name="available_in_pos">True</field>
+        <field name="use_bom_in_pos">True</field>
+    </record>
+
+    <!-- Demo BOM -->
+    <record id="demo_bom_assembly" model="mrp.bom">
+        <field name="product_tmpl_id" ref="product_assembly"/>
+        <field name="product_qty">1.0</field>
+        <field name="type">normal</field>
+        <field name="active">True</field>
+    </record>
+
+    <!-- BOM Lines -->
+    <record id="demo_bom_line_1" model="mrp.bom.line">
+        <field name="bom_id" ref="demo_bom_assembly"/>
+        <field name="product_id" ref="product_component_a"/>
+        <field name="product_qty">2.0</field>
+    </record>
+
+    <record id="demo_bom_line_2" model="mrp.bom.line">
+        <field name="bom_id" ref="demo_bom_assembly"/>
+        <field name="product_id" ref="product_component_b"/>
+        <field name="product_qty">1.0</field>
+    </record>
+
+    <!-- Demo Stock for Components -->
+    <record id="stock_component_a" model="stock.quant">
+        <field name="product_id" ref="product_component_a"/>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="quantity">100.0</field>
+    </record>
+
+    <record id="stock_component_b" model="stock.quant">
+        <field name="product_id" ref="product_component_b"/>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="quantity">50.0</field>
+    </record>
+</odoo>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_template_form_bom_pos" model="ir.ui.view">
+        <field name="name">product.template.form.bom.pos</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='available_in_pos']" position="after">
+                <field name="has_bom" readonly="1"/>
+                <field name="use_bom_in_pos" 
+                       invisible="not has_bom"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_product_template_form_bom_tab" model="ir.ui.view">
+        <field name="name">product.template.form.bom.tab</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="BOM Components" 
+                      invisible="not has_bom">
+                    <group>
+                        <field name="use_bom_in_pos"/>
+                        <separator string="BOM Components"/>
+                        <field name="bom_ids" readonly="1">
+                            <tree>
+                                <field name="product_id"/>
+                                <field name="product_qty"/>
+                                <field name="product_uom_id"/>
+                                <field name="active"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+<!--    <record id="view_product_template_kanban_bom_pos" model="ir.ui.view">-->
+<!--        <field name="name">product.template.kanban.bom.pos</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="product.product_template_kanban_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//div[@class='o_kanban_record_top']" position="inside">-->
+<!--                <span t-if="record.has_bom.raw_value and record.use_bom_in_pos.raw_value" -->
+<!--                      class="badge badge-info ms-1">BOM POS</span>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+    <record id="view_product_template_kanban_bom_pos" model="ir.ui.view">
+      <field name="name">product.template.kanban.bom.pos</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_kanban_view"/>
+      <field name="arch" type="xml">
+        <!-- Insert inside the main details div -->
+        <xpath expr="//div[@class='oe_kanban_details']" position="inside">
+          <!-- Your BOM/POS fields here -->
+          <div class="my_bom_pos_info mt-2">
+            <field name="bom_count" widget="badge"/>
+          </div>
+        </xpath>
+      </field>
+    </record>
+
+
+    <record id="view_product_template_search_bom_pos" model="ir.ui.view">
+        <field name="name">product.template.search.bom.pos</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='consumable']" position="after">
+                <filter name="has_bom" string="Has BOM" domain="[('has_bom', '=', True)]"/>
+                <filter name="use_bom_in_pos" string="Uses BOM in POS" domain="[('use_bom_in_pos', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
