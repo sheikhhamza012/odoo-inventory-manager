@@ -1,0 +1,35 @@
+GNU LESSER GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+
+Copyright (C) 2025 Sheikh Hamza <sheikhhamza012@example.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Additional permissions under GNU LGPL version 3 section 7:
+
+If you modify this library, you may extend this exception to your version
+of the library, but you are not obligated to do so. If you do not wish to
+do so, delete this exception statement from your version.
+
+---
+
+POS BOM Integration - Advanced Stock Validation
+================================================
+
+This Odoo addon integrates Bill of Materials (BOM) functionality with Point of Sale,
+providing comprehensive BOM validation and automatic inventory deduction when products
+with BOM are sold.
+
+The module is licensed under LGPL-3 to ensure it remains free and open-source while
+allowing integration with proprietary Odoo installations.

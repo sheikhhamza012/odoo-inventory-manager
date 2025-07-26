@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_config_form_bom" model="ir.ui.view">
+        <field name="name">pos.config.form.bom</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='row mt16 o_settings_container']" position="inside">
+                <setting string="BOM Stock Validation" 
+                         help="When enabled, POS will validate BOM component stock before allowing orders">
+                    <field name="enable_bom_validation"/>
+                    <div class="content-group mt16" invisible="not enable_bom_validation">
+                        <div class="text-info">
+                            BOM validation is enabled. Products with 'Use BOM in POS' will be validated for component stock.
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>
