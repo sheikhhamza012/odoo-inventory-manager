@@ -88,5 +88,6 @@ Technical Features:
     'cloc_exclude': [
         'debug/**/*',
         'tests/**/*',
+        'static/description/**/*',
     ],
 }

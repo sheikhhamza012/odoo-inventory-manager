@@ -144,7 +144,12 @@ exec(open('addons/pos_bom_integration/debug/test_enhanced_validation.py').read()
 test_enhanced_validation()
 ```
 
-**Note**: All debugging tools and test scripts are located in the `debug/` folder. See `debug/README.md` for complete documentation.
+**Note**: Essential debugging tools are located in the `debug/` folder:
+- `console_helpers.js` - Browser console debugging functions
+- `test_enhanced_validation.py` - Main backend validation testing
+- `test_backend_data.py` - Data loading verification
+
+See `debug/README.md` for usage instructions.
 
 ## Troubleshooting
 
