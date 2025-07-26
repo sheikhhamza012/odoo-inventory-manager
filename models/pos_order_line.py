@@ -4,6 +4,26 @@ from odoo.exceptions import ValidationError
 
 class PosOrderLine(models.Model):
     _inherit = 'pos.order.line'
+    #
+    # def _get_stock_moves_to_consider(self):
+    #     """Override to prevent stock moves for BOM parent products.
+    #
+    #     When a product has BOM enabled for POS:
+    #     - Don't create stock moves for the parent product itself
+    #     - Only BOM components should have their stock deducted
+    #     - This prevents double deduction (parent + components)
+    #
+    #     Returns:
+    #         stock.move recordset: Empty for BOM products, normal for regular products
+    #     """
+    #     # Check if this is a BOM product that should not have its own stock deducted
+    #     if self.product_id.use_bom_in_pos and self.product_id.has_bom:
+    #         # Return empty recordset to prevent stock moves for the parent product
+    #         # BOM components will be handled separately in _create_bom_inventory_moves()
+    #         return self.env['stock.move'].browse()
+    #
+    #     # For regular products, use the standard stock move logic
+    #     return super()._get_stock_moves_to_consider()
 
     def _create_bom_inventory_moves(self):
         """Create inventory moves for BOM components"""
