@@ -59,7 +59,6 @@ Technical Features:
         'security/ir.model.access.csv',
         'views/product_template_views.xml',
         'views/pos_order_views.xml',
-        'views/pos_config_views.xml',
     ],
     'demo': [
         'demo/demo_data.xml',
